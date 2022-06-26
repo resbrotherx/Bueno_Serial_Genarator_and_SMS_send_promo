@@ -1,0 +1,580 @@
+{% load static %}
+ <!doctype html>
+<html lang="en" dir="ltr">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+
+		<!-- META DATA -->
+		<meta charset="UTF-8">
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="Volgh - Codeigniter Bootstrap 5 Admin Template">
+		<meta name="author" content="SPRUKO™">
+		<meta name="keywords" content="codeigniter dashboard template, codeigniter dashboard, codeigniter bootstrap, codeigniter admin panel, codeigniter admin dashboard, codeigniter php template, codeigniter admin template Bootstrap 5, codeigniter bootstrap template, codeigniter admin dashboard template, mvc admin template, codeigniter mvc, codeigniter template bootstrap, php codeigniter template, codeigniter mvc template, codeigniter bootstrap 5 admin template">
+
+                <!-- FAVICON -->
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/brand/favicon.ico' %}" />
+
+        <!-- TITLE -->
+        <title>Bueno</title>
+        <!-- BOOTSTRAP CSS -->
+        <link href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
+
+        <!-- STYLE CSS -->
+        <link href="{% static 'assets/css/style.css' %}" rel="stylesheet"/>
+        <link href="{% static 'assets/css/skin-modes.css' %}" rel="stylesheet"/>
+        <link href="{% static 'assets/css/dark-style.css' %}" rel="stylesheet"/>
+
+        <!-- SINGLE-PAGE CSS -->
+	<link href="{% static 'assets/plugins/single-page/css/main.css' %}" rel="stylesheet" type="text/css">
+
+        <!-- P-scroll bar css-->
+        <link href="{% static 'assets/plugins/p-scroll/perfect-scrollbar.css' %}" rel="stylesheet" />
+
+        <!--- FONT-ICONS CSS -->
+        <link href="{% static 'assets/css/icons.css' %}" rel="stylesheet"/>
+
+        
+		
+        <!-- COLOR SKIN CSS -->
+        <link id="theme" rel="stylesheet" type="text/css" media="all" href="{% static 'assets/colors/color1.css' %}" />
+
+        <!-- SWITCHER SKIN CSS -->
+        <link href="{% static 'assets/switcher/css/switcher.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/switcher/demo.css' %}" rel="stylesheet">
+ 
+        
+			<!--BOOTSTRAP-DATERANGEPICKER CSS-->
+			<link rel="stylesheet" href="{% static 'assets/plugins/bootstrap-daterangepicker/daterangepicker.css' %}">
+
+			<!-- TIME PICKER CSS -->
+			<link href="{% static 'assets/plugins/time-picker/jquery.timepicker.css' %}" rel="stylesheet"/>
+
+			<!-- DATE PICKER CSS -->
+			<link href="{% static 'assets/plugins/date-picker/spectrum.css' %}" rel="stylesheet"/>
+
+			<!-- MULTI SELECT CSS -->
+			<link rel="stylesheet" href="{% static 'assets/plugins/multipleselect/multiple-select.css' %}">
+
+        <!-- SIDE-MENU CSS -->
+        <link href="{% static 'assets/css/sidemenu.css' %}" rel="stylesheet" id="sidemenu">
+
+        <!-- SIDEBAR CSS -->
+        <link href="{% static 'assets/plugins/sidebar/sidebar.css' %}" rel="stylesheet">
+
+
+    </head>
+
+	<body class="app sidebar-mini">
+
+		        <!-- Start Switcher -->
+	<!-- 	<div class="switcher-wrapper ">
+			<div class="demo_changer">
+				<div class="demo-icon bg_dark"><i class="fa fa-cog fa-spin  text_primary"></i></div>
+				<div class="form_holder sidebar-right1">
+					<div class="row">
+						<div class="predefined_styles">
+					
+							<div class="swichermainleft mb-4">
+								<h4>RTL Navigation Style</h4>
+								<div class="ps-3 pe-3 pt-3 d-grid gap-2">
+									<a class="btn btn-success " href="../rtl/vertical-light.html"> Vertical-Menu</a>
+									<a class="btn btn-danger" href="../rtl/horizontal-light.html"> Horizontal-Menu </a>
+								</div>
+							</div>
+							<div class="swichermainleft mb-4">
+								<h4>LTR Navigation Style</h4>
+								<div class="ps-3 pe-3 pt-3 d-grid gap-2">
+									<a class="btn btn-primary " href="vertical-light.html"> Vertical-Menu</a>
+									<a class="btn btn-info" href="horizontal-light.html"> Horizontal-Menu </a>
+								</div>
+							</div>
+							<div class="swichermainleft">
+								<h4>Skin Modes</h4>
+								<div class="switch_section">
+									<div class="switch-toggle d-flex">
+										<span class="me-auto">Light Mode</span>
+										<div class="onoffswitch2"><input type="radio" name="onoffswitch2" id="myonoffswitch3" class="onoffswitch2-checkbox" checked>
+											<label for="myonoffswitch3" class="onoffswitch2-label"></label>
+										</div>
+									</div>
+									<div class="switch-toggle d-flex">
+										<span class="me-auto">Transparent Mode</span>
+										<div class="onoffswitch2"><input type="radio" name="onoffswitch2" id="myonoffswitch4" class="onoffswitch2-checkbox">
+											<label for="myonoffswitch4" class="onoffswitch2-label"></label>
+										</div>
+									</div>
+									<div class="switch-toggle d-flex">
+										<span class="me-auto">Dark Mode</span>
+										<div class="onoffswitch2"><input type="radio" name="onoffswitch2" id="myonoffswitch16" class="onoffswitch2-checkbox">
+											<label for="myonoffswitch16" class="onoffswitch2-label"></label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix"></div>
+							<div class="swichermainleft">
+								<h4>Leftmenu Layout Width Styles</h4>
+								<div class="switch_section">
+									<div class="switch-toggle d-flex">
+										<span class="me-auto">Default Leftmenu </span>
+										<div class="onoffswitch2"><input type="radio" name="onoffswitch3" id="myonoffswitch15" class="onoffswitch2-checkbox">
+											<label for="myonoffswitch15" class="onoffswitch2-label"></label>
+										</div>
+									</div>
+									<div class="switch-toggle d-flex">
+										<span class="me-auto">Boxed</span>
+										<div class="onoffswitch2"><input type="radio" name="onoffswitch3" id="myonoffswitch17" class="onoffswitch2-checkbox">
+											<label for="myonoffswitch17" class="onoffswitch2-label"></label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="swichermainleft">
+								<h4>Leftmenu Versions</h4>
+								<div class="switch_section">
+									<div class="switch-toggle d-flex">
+										<span class="me-auto">Default Leftmenu </span>
+										<div class="onoffswitch2"><input type="radio" name="onoffswitch4" id="myonoffswitch20" class="onoffswitch2-checkbox">
+
+											<label for="myonoffswitch20" class="onoffswitch2-label"></label>
+										</div>
+									</div>
+									<div class="switch-toggle d-flex">
+										<span class="me-auto">Icon-Overlay</span>
+										<div class="onoffswitch2"><input type="radio" name="onoffswitch4" id="myonoffswitch21" class="onoffswitch2-checkbox">
+											<label for="myonoffswitch21" class="onoffswitch2-label"></label>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="swichermainleft">
+								<div class="switch_bg-img">
+									<div class=" d-flex">
+										<span class="me-auto">Left-menu Bg-Image</span>
+										<div class="onoffswitch2"><input type="checkbox" name="checkbox" id="myonoffswitch-1" class="onoffswitch2-checkbox">
+											<label for="myonoffswitch-1" class="onoffswitch2-label"></label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="skin-theme-switcher">
+								<div class="swichermainleft">
+									<h4>Leftmenu Styles Mode</h4>
+									<div class="switch_section">
+										<div class="switch-toggle d-flex">
+											<span class="me-auto">Light Menu</span>
+											<div class="onoffswitch2"><input type="radio" name="onoffswitch5" id="myonoffswitch1" class="onoffswitch2-checkbox">
+												<label for="myonoffswitch1" class="onoffswitch2-label"></label>
+											</div>
+										</div>
+										<div class="switch-toggle d-flex">
+											<span class="me-auto">Dark Menu</span>
+											<div class="onoffswitch2"><input type="radio" name="onoffswitch5" id="myonoffswitch2" class="onoffswitch2-checkbox">
+												<label for="myonoffswitch2" class="onoffswitch2-label"></label>
+											</div>
+										</div>
+										<div class="switch-toggle d-flex">
+											<span class="me-auto">Color Menu</span>
+											<div class="onoffswitch2"><input type="radio" name="onoffswitch5" id="myonoffswitch" class="onoffswitch2-checkbox">
+												<label for="myonoffswitch" class="onoffswitch2-label"></label>
+											</div>
+										</div>
+										<div class="switch-toggle d-flex">
+											<span class="me-auto">Gradient-Color Menu</span>
+											<div class="onoffswitch2"><input type="radio" name="onoffswitch5" id="myonoffswitch5" class="onoffswitch2-checkbox">
+												<label for="myonoffswitch5" class="onoffswitch2-label"></label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="swichermainleft">
+									<h4>Color-Skins</h4>
+									<div class="skin-body">
+										<a class="wscolorcode1 blackborder color1" href="#" data-theme="{% static 'assets/colors/color1.css'%}"></a>
+										<a class="wscolorcode1 blackborder color2" href="#" data-theme="{% static 'assets/colors/color2.css"></a>
+										<a class="wscolorcode1 blackborder color3" href="#" data-theme="{% static 'assets/colors/color3.css"></a>
+										<a class="wscolorcode1 blackborder color4" href="#" data-theme="{% static 'assets/colors/color4.css"></a>
+										<a class="wscolorcode1 blackborder color5" href="#" data-theme="{% static 'assets/colors/color5.css"></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<!-- End Switcher -->
+		<!-- GLOBAL-LOADER -->
+		<div id="global-loader">
+			<img src="{% static 'assets/images/loader.svg' %}" class="loader-img" alt="Loader">
+		</div>
+		<!-- /GLOBAL-LOADER -->
+
+        <!-- PAGE -->
+		<div class="page">
+			<div class="page-main">
+
+				                <!--APP-SIDEBAR-->
+				<div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
+				<aside class="app-sidebar">
+					<div class="side-header">
+						<a class="header-brand1" href="index.html">
+							<img src="{% static 'assets/images/brand/logo.png' %}" class="header-brand-img desktop-logo" alt="logo">
+							<img src="{% static 'assets/images/brand/logo-1.png' %}" class="header-brand-img toggle-logo" alt="logo">
+							<img src="{% static 'assets/images/brand/logo-2.png' %}" class="header-brand-img light-logo" alt="logo">
+							<img src="{% static 'assets/images/brand/logo-3.png' %}" class="header-brand-img light-logo1" alt="logo" id="change-image">
+						</a><!-- LOGO -->
+						<a aria-label="Hide Sidebar" class="app-sidebar__toggle ms-auto" data-bs-toggle="sidebar" href="#"></a><!-- sidebar-toggle-->
+					</div>
+					<div class="app-sidebar__user">
+						<div class="dropdown user-pro-body text-center">
+							<div class="user-pic">
+								<img src="{{user.profile.image.url}}" alt="user-img" class="avatar-xl rounded-circle">
+							</div>
+							<div class="user-info">
+								<h6 class=" mb-0 text-dark">{{user.first_name}} {{user.last_name}}</h6>
+								<span class="text-muted app-sidebar__user-name text-sm">{{user.username}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="sidebar-navs">
+						<ul class="nav  nav-pills-circle">
+							<li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="top" title="Settings">
+								<a href="#" class="nav-link text-center m-2">
+									<i class="fe fe-edit"></i>
+								</a>
+							</li>
+							<!-- <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="top" title="Chat">
+								<a href="chat.html" class="nav-link text-center m-2">
+									<i class="fe fe-mail"></i>
+								</a>
+							</li>
+							<li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="top" title="Followers">
+								<a href="users-list.html" class="nav-link text-center m-2">
+									<i class="fe fe-user"></i>
+								</a>
+							</li> -->
+							<li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="top" title="Logout" style="margin-left: 120px;">
+								<a href="/logout" class="nav-link text-center m-2">
+									<i class="fe fe-power"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<ul class="side-menu">
+						<li class="slide">
+							<a class="side-menu__item"  data-bs-toggle="slide" href="/dashboard"><i class="side-menu__icon ti-home"></i><span class="side-menu__label">Dashboard</span><i class="angle fa fa-angle-right"></i></a>
+							
+						</li>
+						<br>
+						<li>
+							<a class="side-menu__item" href="/genarator"><i class="side-menu__icon ti-clipboard"></i><span class="side-menu__label">Generate Serial</span><i class="angle fa fa-angle-right"></i></a>
+						</li>
+						<br>
+						<li>
+							<a class="side-menu__item" href="/serial"><i class="side-menu__icon ti-clipboard"></i><span class="side-menu__label">Inactive Serial</span><i class="angle fa fa-angle-right"></i></a>
+						</li>
+						<br>
+						<li>
+							<a class="side-menu__item" href="/addnew"><i class="side-menu__icon ti-clipboard"></i><span class="side-menu__label">Active Serial</span><i class="angle fa fa-angle-right"></i></a>
+						</li>
+						<br>
+						<li>
+							<a class="side-menu__item" href="/Soled_Serial"><i class="side-menu__icon ti-shopping-cart"></i><span class="side-menu__label">Sold Serial</span><i class="angle fa fa-angle-right"></i></a>
+						</li>
+						<br>
+
+						<li>
+							<a class="side-menu__item" href="/promo"><i class="side-menu__icon ti-shopping-cart"></i><span class="side-menu__label">Run Promo</span><i class="angle fa fa-angle-right"></i></a>
+						</li>
+						<br>
+						<li>
+							<a class="side-menu__item" href="/archived"><i class="side-menu__icon ti-shopping-cart"></i><span class="side-menu__label">Archived Serial</span><i class="angle fa fa-angle-right"></i></a>
+						</li>
+						<br>
+						<li>
+							<a class="side-menu__item" href="/users"><i class="side-menu__icon ti-receipt"></i><span class="side-menu__label">All Users</span><i class="angle fa fa-angle-right"></i></a>
+						</li>
+						
+			
+					</ul>
+				</aside>
+				<!--/APP-SIDEBAR-->
+                                <!-- Mobile Header -->
+				<div class="mobile-header">
+					<div class="container-fluid">
+						<div class="d-flex">
+							<a aria-label="Hide Sidebar" class="app-sidebar__toggle" data-bs-toggle="sidebar" href="#"></a><!-- sidebar-toggle-->
+							<a class="header-brand" href="/">
+								<img src="{% static 'assets/images/brand/logo.png' %}" class="header-brand-img desktop-logo" alt="logo">
+								<img src="{% static 'assets/images/brand/logo-3.png' %}" class="header-brand-img desktop-logo mobile-light" alt="logo">
+							</a>
+							<div class="d-flex order-lg-2 ms-auto header-right-icons">
+								<button class="navbar-toggler navresponsive-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent-4"
+									aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+									<span class="navbar-toggler-icon fe fe-more-vertical text-white"></span>
+								</button>
+								<div class="dropdown profile-1">
+									<a href="#" data-bs-toggle="dropdown" class="nav-link pe-2 leading-none d-flex">
+										<span>
+											<img src="{{user.profile.image.url}}" alt="profile-user" class="avatar  profile-user brround cover-image">
+										</span>
+									</a>
+									<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+										<div class="drop-heading">
+											<div class="text-center">
+												<h5 class="text-dark mb-0">{{user.first_name}} {{user.last_name}}</h5>
+												<small class="text-muted">{{user.username}}</small>
+											</div>
+										</div>
+										<div class="dropdown-divider m-0"></div>
+										<a class="dropdown-item" href="/profile">
+											<i class="dropdown-icon mdi mdi-account-outline"></i> Profile
+										</a>
+										<a class="dropdown-item" href="editprofile.html">
+											<i class="dropdown-icon  mdi mdi-settings"></i> Settings
+										</a>
+										
+										<a class="dropdown-item" href="/login">
+											<i class="dropdown-icon mdi  mdi-logout-variant"></i> Sign out
+										</a>
+									</div>
+								</div>
+								<div class="dropdown d-md-flex header-settings">
+									<a href="#" class="nav-link icon " data-bs-toggle="sidebar-right" data-bs-target=".sidebar-right">
+										<i class="fe fe-align-right"></i>
+									</a>
+								</div><!-- SIDE-MENU -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="mb-1 navbar navbar-expand-lg  responsive-navbar navbar-dark d-md-none bg-white">
+					<div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+						<div class="d-flex order-lg-2 ms-auto">
+							<div class="dropdown d-sm-flex">
+								<a href="#" class="nav-link icon" data-bs-toggle="dropdown">
+									<i class="fe fe-search"></i>
+								</a>
+								<div class="dropdown-menu header-search dropdown-menu-start">
+									<div class="input-group w-100 p-2">
+										<input type="text" class="form-control " placeholder="Search....">
+										<div class=" ">
+											<button type="button" class="btn btn-primary ">
+												<i class="fa fa-search" aria-hidden="true"></i>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div><!-- SEARCH -->
+							<div class="dropdown d-md-flex">
+								<a class="nav-link icon full-screen-link nav-link-bg">
+									<i class="fe fe-maximize fullscreen-button"></i>
+								</a>
+							</div><!-- FULL-SCREEN -->
+						</div>
+					</div>
+				</div>
+				<!-- /Mobile Header -->
+
+
+
+
+
+
+
+
+
+{% block content %}
+
+
+
+
+{% endblock content %}
+
+
+
+
+			</div>
+
+                        <!-- FOOTER -->
+		
+{% comment %} <footer class="footer">
+	<div class="container">
+		<div class="row align-items-center flex-row-reverse">
+			<div class="col-md-12 col-sm-12 text-center">
+				<a href="#">Bueno</a>. Designed by <a href="#">  Sterling Technologies </a> All rights reserved.
+			</div>
+		</div>
+	</div>
+</footer> {% endcomment %}
+			<!-- FOOTER CLOSED -->
+      
+
+		        <!-- BACK-TO-TOP -->
+        <a href="#top" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+        <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+        <!-- JQUERY JS -->
+        <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <!-- BOOTSTRAP JS -->
+        <script src="{% static 'assets/plugins/bootstrap/js/popper.min.js' %}"></script>
+        <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+
+        <!-- RATING STAR JS-->
+        <script src="{% static 'assets/plugins/rating/jquery.rating-stars.js' %}"></script>
+
+        <!-- INPUT MASK JS-->
+        <script src="{% static 'assets/plugins/input-mask/jquery.mask.min.js' %}"></script>
+
+        <!-- SIDE-MENU JS -->
+        <script src="{% static 'assets/plugins/sidemenu/sidemenu.js' %}"></script>
+
+        <!-- SWITCHER JS -->
+        <script src="{% static 'assets/switcher/js/switcher.js' %}"></script>
+
+        <!-- SIDEBAR JS -->
+        <script src="{% static 'assets/plugins/sidebar/sidebar.js' %}"></script>
+
+        <!-- Perfect SCROLLBAR JS-->
+        <script src="{% static 'assets/plugins/p-scroll/perfect-scrollbar.js' %}"></script>
+        <script src="{% static 'assets/plugins/p-scroll/pscroll.js' %}"></script>
+        <script src="{% static 'assets/plugins/p-scroll/pscroll-1.js' %}"></script>
+
+        
+			<!-- CHARTJS CHART JS -->
+			<script src="{% static 'assets/plugins/chart/Chart.bundle.js' %}"></script>
+			<script src="{% static 'assets/plugins/chart/utils.js' %}"></script>
+
+			<!-- C3.JS CHART JS -->
+			<script src="{% static 'assets/plugins/charts-c3/d3.v5.min.js' %}"></script>
+			<script src="{% static 'assets/plugins/charts-c3/c3-chart.js' %}"></script>
+
+			<!-- INDEX JS -->
+			<script src="{% static 'assets/js/index3.js' %}"></script>
+
+			<!-- PIETY CHART JS-->
+			<script src="{% static 'assets/plugins/peitychart/jquery.peity.min.js' %}"></script>
+			<script src="{% static 'assets/plugins/peitychart/peitychart.init.js' %}"></script>
+			<!-- BOOTSTRAP-DATERANGEPICKER JS -->
+			<script src="{% static 'assets/plugins/bootstrap-daterangepicker/moment.min.js' %}"></script>
+			<script src="{% static 'assets/plugins/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+
+			<!-- TIMEPICKER JS -->
+			<script src="{% static 'assets/plugins/time-picker/jquery.timepicker.js' %}"></script>
+			<script src="{% static 'assets/plugins/time-picker/toggles.min.js' %}"></script>
+
+			<!-- DATEPICKER JS -->
+			<script src="{% static 'assets/plugins/date-picker/spectrum.js' %}"></script>
+			<script src="{% static 'assets/plugins/date-picker/jquery-ui.js' %}"></script>
+			<script src="{% static 'assets/plugins/input-mask/jquery.maskedinput.js' %}"></script>
+		<!-- MULTI SELECT JS-->
+			<script src="{% static 'assets/plugins/multipleselect/multiple-select.js' %}"></script>
+			<script src="{% static 'assets/plugins/multipleselect/multi-select.js' %}"></script>
+
+			<!-- FORMELEMENTS JS -->
+			<script src="{% static 'assets/js/form-elements.js' %}"></script>
+        <!-- CUSTOM JS-->
+        <script src="{% static 'assets/js/custom.js' %}"></script>
+
+        <!-- Color Change JS -->
+        <script src="{% static 'assets/js/color-change.js' %}"></script>
+
+		<script>
+			function submitForm(form) {
+				swal({
+					title: "You are about to Generate serials",
+					text: "do you wish to continue",
+					icon: "warning",
+					buttons: true,
+				})
+				.then(function (isOkay) {
+					if (isOkay) {
+						form.submit();
+						swal("successfully Generated!","Loading","success");
+					}
+				});
+				return false;
+			}
+		</script>
+		<script>
+			function submitFormDetails(form) {
+				swal({
+					title: "You are about to Run Promo",
+					text: "do you wish to continue",
+					icon: "warning",
+					buttons: true,
+				})
+				.then(function (isOkay) {
+					if (isOkay) {
+						form.submit();
+						swal("successfully Raned!","Loading","success");
+					}
+				});
+				return false;
+			}
+		</script>
+		{% comment %} <script>
+			function deleteForm() {
+				swal({
+					title: "You are about to Generate serials",
+					text: "do you wish to continue",
+					icon: "warning",
+					buttons: true,
+				})
+				.then(function (isOkay) {
+					if (isOkay) {
+						confirm();
+						swal("successfully Generated!","Loading","success");
+					}
+				});
+				return false;
+			}
+		</script>	
+		
+		<script>
+			$(document).ready(function () {
+				$('.confirm_del').click(function (e) {
+					e.preventDefault();
+					var id = $(this).val();
+		
+					swal({
+						title: "Are you sure?",
+						text: "Once deleted, you will not be able to recover this imaginary file!",
+						icon: "warning",
+						buttons: true,
+						dangerMode: true,
+					  })
+					  .then((willDelete) => {
+						if (willDelete) 
+						{
+							{% comment %} swal("Poof! Your imaginary file has been deleted!", {
+								icon: "success",
+							}); {% endcomment %}
+						  {% comment %} $.ajax({
+							  url:"/deletes/"+id,
+							  success: function (response){
+								swal({
+									title: 'deleted successfully',
+									text: "your serial data has been deleted successfully",
+									icon: "success",
+									button: "ok",
+								}).then((confirm) => {
+									window.location.reload();
+								});
+						  });
+						} 
+						else 
+						{
+						  swal("Your imaginary file is safe!");
+						}
+					});
+				});
+			}); {% endcomment %}
+		{% comment %} </script> {% endcomment %} 
+<script src="assets/js/sweetalert.min.js"></script>
+
+    </body>
+</html>

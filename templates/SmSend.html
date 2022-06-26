@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>send</title>
+	<style type="text/css">
+		/* Demo css after plugin css */
+
+/* = ICONS
+------------------- */
+@import url('https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css');
+
+
+/* generic */
+ body {
+    color: #3F3F3F;
+    font-family:'Droid Sans', Tahoma, Arial, Verdana sans-serif;
+    font-size:16px;
+    background:#3F3F3F;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+h1 {
+    font-family:'Questrial', Verdana, sans-serif;
+    text-align:center;
+    font-size:40px;
+    padding:0;
+    margin:0 0 20px 0;
+    position:relative;
+    color:#8C8C8C;
+}
+/** have a nice ampersand **/
+ h1:after {
+    font-size:25px;
+    color:#D6CFCB;
+    content:'&';
+    text-align:center;
+    display:block;
+    width:100%;
+    font-family:'Alice', Verdana, serif;
+    text-shadow: 0px 1px 0px #fff;
+}
+/** create the gradient bottom **/
+ h1:before {
+    position:absolute;
+    bottom:15px;
+    content:' ';
+    text-align:center;
+    display:block;
+    height:2px;
+    width:100%;
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(182, 180, 180, 0.7) 42%, rgba(180, 178, 178, 0) 43%, rgba(168, 166, 166, 0) 50%, rgba(180, 178, 178, 0) 57%, rgba(182, 180, 180, 0.7) 58%, rgba(238, 237, 237, 0.3) 90%, rgba(255, 255, 255, 0) 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(42%, rgba(182, 180, 180, 0.7)), color-stop(43%, rgba(180, 178, 178, 0)), color-stop(50%, rgba(168, 166, 166, 0)), color-stop(57%, rgba(180, 178, 178, 0)), color-stop(58%, rgba(182, 180, 180, 0.7)), color-stop(90%, rgba(238, 237, 237, 0.3)), color-stop(100%, rgba(255, 255, 255, 0)));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(182, 180, 180, 0.7) 42%, rgba(180, 178, 178, 0) 43%, rgba(168, 166, 166, 0) 50%, rgba(180, 178, 178, 0) 57%, rgba(182, 180, 180, 0.7) 58%, rgba(238, 237, 237, 0.3) 90%, rgba(255, 255, 255, 0) 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(182, 180, 180, 0.7) 42%, rgba(180, 178, 178, 0) 43%, rgba(168, 166, 166, 0) 50%, rgba(180, 178, 178, 0) 57%, rgba(182, 180, 180, 0.7) 58%, rgba(238, 237, 237, 0.3) 90%, rgba(255, 255, 255, 0) 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(182, 180, 180, 0.7) 42%, rgba(180, 178, 178, 0) 43%, rgba(168, 166, 166, 0) 50%, rgba(180, 178, 178, 0) 57%, rgba(182, 180, 180, 0.7) 58%, rgba(238, 237, 237, 0.3) 90%, rgba(255, 255, 255, 0) 100%);
+    /* IE10+ */
+    background: linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(182, 180, 180, 0.7) 42%, rgba(180, 178, 178, 0) 43%, rgba(168, 166, 166, 0) 50%, rgba(180, 178, 178, 0) 57%, rgba(182, 180, 180, 0.7) 58%, rgba(238, 237, 237, 0.3) 90%, rgba(255, 255, 255, 0) 100%);
+    /* W3C */
+}
+/* Here comes to good stuff : content styling */
+ #content {
+    position:relative;
+    margin:50px auto;
+    width:400px;
+    min-height:200px;
+    z-index:100;
+    padding:30px;
+    border:1px solid #383838;
+    /* My stipped background */
+    background: #D1D1D1;
+    /* Old browsers */
+    background: -moz-repeating-linear-gradient(-45deg, #EFC1CB, #EFC1CB 30px, #F2F2F2 30px, #F2F2F2 40px, #C2E8F5 40px, #C2E8F5 70px, #F2F2F2 70px, #F2F2F2 80px);
+    /* FF3.6+ */
+    background: -webkit-repeating-linear-gradient(-45deg, #EFC1CB, #EFC1CB 30px, #F2F2F2 30px, #F2F2F2 40px, #C2E8F5 40px, #C2E8F5 70px, #F2F2F2 70px, #F2F2F2 80px);
+    /* FF3.6+ */
+    background: -o-repeating-linear-gradient(-45deg, #EFC1CB, #EFC1CB 30px, #F2F2F2 30px, #F2F2F2 40px, #C2E8F5 40px, #C2E8F5 70px, #F2F2F2 70px, #F2F2F2 80px);
+    /* FF3.6+ */
+    background: repeating-linear-gradient(-45deg, #EFC1CB, #EFC1CB 30px, #F2F2F2 30px, #F2F2F2 40px, #C2E8F5 40px, #C2E8F5 70px, #F2F2F2 70px, #F2F2F2 80px);
+    /* FF3.6+ */
+    /*border-radius*/
+    -webkit-border-radius:8px;
+    -moz-border-radius:8px;
+    border-radius:8px;
+    /*box-shadow*/
+    -webkit-box-shadow:0px 1px 6px #3F3F3F;
+    -moz-box-shadow:0px 1px 6px #3F3F3F;
+    box-shadow:0px 1px 6px #3F3F3F;
+}
+/** my "fake" background that will hover the stripes **/
+ #content:after {
+    background:#F9F9F9;
+    margin:10px;
+    position: absolute;
+    content :" ";
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    border:1px #E5E5E5 solid;
+    /*border-radius*/
+    -webkit-border-radius:8px;
+    -moz-border-radius:8px;
+    border-radius:8px;
+}
+/*** form styling **/
+
+/** we remove the red glow around required fields since we are already using the red star */
+ input:required, textarea:required {
+    -moz-box-shadow:none;
+    -webkit-box-shadow:none;
+    -o-box-shadow:none;
+    box-shadow:none;
+}
+/** inputs and textarea**/
+ input:not([type="submit"]), textarea {
+    outline:none;
+    display:block;
+    width:380px;
+    padding:4px 8px;
+    border:1px dashed #DBDBDB;
+    color:#3F3F3F;
+    font-family:'Droid Sans', Tahoma, Arial, Verdana sans-serif;
+    font-size:14px;
+    /*border-radius*/
+    -webkit-border-radius:2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
+    /*transition*/
+    -webkit-transition:background 0.2s linear, box-shadow 0.6s linear;
+    -moz-transition:background 0.2s linear, box-shadow 0.6s linear;
+    -o-transition:background 0.2s linear, box-shadow 0.6s linear;
+    transition:background 0.2s linear, box-shadow 0.6s linear;
+}
+input:not([type="submit"]):active, textarea:active, input:not([type="submit"]):focus, textarea:focus {
+    background:#F7F7F7;
+    border:dashed 1px #969696;
+    /*box-shadow*/
+    -webkit-box-shadow:2px 2px 7px #E8E8E8 inset;
+    -moz-box-shadow:2px 2px 7px #E8E8E8 inset;
+    box-shadow:2px 2px 7px #E8E8E8 inset;
+}
+input:not([type="submit"]) {
+    height: 20px;
+}
+/* placeholder */
+ ::-webkit-input-placeholder {
+    color:#BABABA;
+    font-style:italic;
+}
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color:#BABABA;
+    font-style:italic;
+}
+textarea {
+    min-height:150px;
+    resize:vertical
+}
+/** labels**/
+
+/** adding our icon font !! */
+ .iconic:before {
+    font-size:25px;
+    font-family:'Alice', Verdana, serif;
+}
+.iconic.link:before {
+    content:'/';
+}
+.iconic.quote-alt:before {
+    content:"'";
+}
+.iconic.comment:before {
+    content:"q";
+}
+.iconic.user:before {
+    content:"u";
+}
+.iconic.mail-alt:before {
+    content:"M";
+}
+label {
+    color:#7F7E7E;
+    -webkit-transition: color 1s ease;
+    -moz-transition: color 1s ease;
+    transition: color 1s ease;
+}
+label:hover {
+    color:#191919;
+}
+label:before {
+    color:#C1BFBD;
+    -webkit-transition: color 1s ease;
+    -moz-transition: color 1s ease;
+    transition: color 1s ease;
+}
+label:hover:before {
+    color:#969696;
+    -webkit-transition: color 1s ease;
+    -moz-transition: color 1s ease;
+    transition: color 1s ease;
+}
+p {
+    margin-bottom:20px;
+}
+.indication {
+    color:#878787;
+    font-size:12px;
+    font-style:italic;
+    text-align:right;
+    padding-right:10px;
+}
+.required {
+    color:#E5224C;
+}
+/** Styling the send button **/
+ input[type=submit] {
+    margin-left:235px;
+    cursor:pointer;
+    background:none;
+    border:none;
+    font-family:'Alice', serif;
+    color:#767676;
+    font-size:18px;
+    padding:10px 4px;
+    border:1px solid #E0E0E0;
+    text-shadow: 0px 1px 1px #E8E8E8;
+    background: rgb(247, 247, 247);
+    background: -moz-linear-gradient(top, rgba(247, 247, 247, 1) 1%, rgba(242, 242, 242, 1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, rgba(247, 247, 247, 1)), color-stop(100%, rgba(242, 242, 242, 1)));
+    background: -webkit-linear-gradient(top, rgba(247, 247, 247, 1) 1%, rgba(242, 242, 242, 1) 100%);
+    background: -o-linear-gradient(top, rgba(247, 247, 247, 1) 1%, rgba(242, 242, 242, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(247, 247, 247, 1) 1%, rgba(242, 242, 242, 1) 100%);
+    background: linear-gradient(top, rgba(247, 247, 247, 1) 1%, rgba(242, 242, 242, 1) 100%);
+    /*border-radius*/
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    /*box-shadow*/
+    -webkit-box-shadow:0px 1px 1px #FFF inset, 0 0 0px 5px #EAEAEA;
+    -moz-box-shadow:0px 1px 1px #FFF inset, 0 0 0px 5px #EAEAEA;
+    box-shadow:0px 1px 1px #FFF inset, 0 0 0px 5px #EAEAEA;
+    /*transition*/
+    -webkit-transition:all 0.2s linear;
+    -moz-transition:all 0.2s linear;
+    -o-transition:all 0.2s linear;
+    transition:all 0.2s linear;
+}
+input[type=submit]:hover {
+    color:#686868;
+    border-color: #CECECE;
+    background: rgb(244, 244, 244);
+    background: -moz-linear-gradient(top, rgba(244, 244, 244, 1) 0%, rgba(242, 242, 242, 1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(244, 244, 244, 1)), color-stop(100%, rgba(242, 242, 242, 1)));
+    background: -webkit-linear-gradient(top, rgba(244, 244, 244, 1) 0%, rgba(242, 242, 242, 1) 100%);
+    background: -o-linear-gradient(top, rgba(244, 244, 244, 1) 0%, rgba(242, 242, 242, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(244, 244, 244, 1) 0%, rgba(242, 242, 242, 1) 100%);
+    background: linear-gradient(top, rgba(244, 244, 244, 1) 0%, rgba(242, 242, 242, 1) 100%);
+    /*box-shadow*/
+    -webkit-box-shadow:0px 1px 1px #FFF inset, 0 0 0px 5px #E0E0E0;
+    -moz-box-shadow:0px 1px 1px #FFF inset, 0 0 0px 5px #E0E0E0;
+    box-shadow:0px 1px 1px #FFF inset, 0 0 0px 5px #E0E0E0;
+}
+input[type=submit]:active, input[type=submit]:focus {
+    position:relative;
+    top:1px;
+    color:#515151;
+    background: rgb(234, 234, 234);
+    background: -moz-linear-gradient(top, rgba(234, 234, 234, 1) 0%, rgba(242, 242, 242, 1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(234, 234, 234, 1)), color-stop(100%, rgba(242, 242, 242, 1)));
+    background: -webkit-linear-gradient(top, rgba(234, 234, 234, 1) 0%, rgba(242, 242, 242, 1) 100%);
+    background: -o-linear-gradient(top, rgba(234, 234, 234, 1) 0%, rgba(242, 242, 242, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(234, 234, 234, 1) 0%, rgba(242, 242, 242, 1) 100%);
+    background: linear-gradient(top, rgba(234, 234, 234, 1) 0%, rgba(242, 242, 242, 1) 100%);
+    /*box-shadow*/
+    -webkit-box-shadow:0px -1px 1px #FFF inset, 0 0 0px 5px #E0E0E0;
+    -moz-box-shadow:0px -1px 1px #FFF inset, 0 0 0px 5px #E0E0E0;
+    box-shadow:0px -1px 1px #FFF inset, 0 0 0px 5px #E0E0E0;
+}
+	</style>
+
+<link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet' type='text/css'>
+<link href="https://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="content">
+    <h1>Your Sms</h1>
+
+    <form action=" " method="post" autocomplete="on">
+   				{% csrf_token %}
+
+        <p>
+            <label for="message" class="icon-comment"> Message
+                <span class="required">*</span>
+            </label>
+            <textarea name="sms" placeholder="Your message here and I'll answer as soon as possible " required="required"></textarea>
+        </p>
+        <p class="indication">Field with
+            <span class="required"> * </span>are required</p>
+
+        <input type="submit" value=" Send SMS ! " />
+
+    </form>
+</div>
+<script type="text/javascript">
+	/**
+ *  Plugin name:SWEDitor
+ *  Author: Moncho Varela / nakome
+ *  Date: 20/10/2013 ten day for my birthday LOL
+ *  @nakome on twitter
+ */
+(function(window) {
+  
+  'use strict';
+  
+  
+  function getTemplate(el) {
+    // Template html
+    var html = '<div class="box-editor">' +
+        '<div id="thisForm">' +
+        '<input type="hidden" name="myDoc">' +
+        '<div id="toolBar2">' +
+        '<label class="custom-select fonthd">' +
+        '<select class="selectThis" data-chg="formatblock">' +
+        '<option selected>:: Formatting </option>' +
+        '<option value="h1">Header &lt;h1&gt;</option>' +
+        '<option value="h2">Header &lt;h2&gt;</option>' +
+        '<option value="h3">Header &lt;h3&gt;</option>' +
+        '<option value="h4">Header &lt;h4&gt;</option>' +
+        '<option value="h5">Header &lt;h5&gt;</option>' +
+        '<option value="h6">Header &lt;h6&gt;</option>' +
+        '<option value="p">Paragraph <p></option>' +
+        '<option value="pre">Preformatted <pre></option>' +
+        '</select>' +
+        '</label>' +
+        '<label class="custom-select fontFam">' +
+        '<select class="selectThis" data-chg="fontname">' +
+        '<option class="heading" selected>:: Font</option>' +
+        '<option value=\' Arial, "Helvetica Neue", Helvetica, sans-serif\'>Arial</option>' +
+        '<option value=\' "Arial Black", "Arial Bold", Gadget, sans-serif\'>Arial Black</option>' +
+        '<option value=\' "Arial Narrow", Arial, sans-serif\'>Arial Narrow</option>' +
+        '<option value=\' "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif\'>Arial Rounded MT Bold</option>' +
+        '<option value=\' "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif\'>Avant Garde</option>' +
+        '<option value=\' Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif\'>Calibri</option>' +
+        '<option value=\' Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif\'>Candara</option>' +
+        '<option value=\' "Century Gothic", CenturyGothic, AppleGothic, sans-serif\'>Century Gothic</option>' +
+        '<option value=\' "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif\'>Franklin Gothic Medium</option>' +
+        '<option value=\' Futura, "Trebuchet MS", Arial, sans-serif\'>Futura</option>' +
+        '<option value=\' Geneva, Tahoma, Verdana, sans-serif\'>Geneva</option>' +
+        '<option value=\' "Gill Sans", "Gill Sans MT", Calibri, sans-serif\'>Gill Sans</option>' +
+        '<option value=\' "Helvetica Neue", Helvetica, Arial, sans-serif\'>Helvetica Neue</option>' +
+        '<option value=\' Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", sans serif\'>Impact</option>' +
+        '<option value=\' "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif\'>Lucida Grande</option>' +
+        '<option value=\' Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif\'>Optima</option>' +
+        '<option value=\' "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif\'>Segoe UI</option>' +
+        '<option value=\' Tahoma, Verdana, Segoe, sans-serif\'>Tahoma</option>' +
+        '<option value=\' "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif\'>Trebuchet MS</option>' +
+        '<option value=\' Verdana, Geneva, sans-serif\'>Verdana</option>' +
+        '<option value=\' Baskerville, "Baskerville Old Face", "Hoefler Text", Garamond, "Times New Roman", serif\'>Baskerville</option>' +
+        '<option value=\' "Bodoni MT", Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif\'>Bodoni MT</option>' +
+        '<option value=\' "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif\'>Book Antiqua</option>' +
+        '<option value=\' "Calisto MT", "Bookman Old Style", Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif\'>Calisto MT</option>' +
+        '<option value=\' Cambria, Georgia, serif\'>Cambria</option>' +
+        '<option value=\' Didot, "Didot LT STD", "Hoefler Text", Garamond, "Times New Roman", serif\'>Didot</option>' +
+        '<option value=\' Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif\'>Garamond</option>' +
+        '<option value=\' Georgia, Times, "Times New Roman", serif\'>Georgia</option>' +
+        '<option value=\' "Goudy Old Style", Garamond, "Big Caslon", "Times New Roman", serif\'>Goudy Old Style</option>' +
+        '<option value=\' "Hoefler Text", "Baskerville old face", Garamond, "Times New Roman", serif\'>Hoefler Text</option>' +
+        '<option value=\' "Lucida Bright", Georgia, serif\'>Lucida Bright</option>' +
+        '<option value=\' Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif\'>Palatino</option>' +
+        '<option value=\' Perpetua, Baskerville, "Big Caslon", "Palatino Linotype", Palatino, "URW Palladio L", "Nimbus Roman No9 L", serif\'>Perpetua</option>' +
+        '<option value=\' Rockwell, "Courier Bold", Courier, Georgia, Times, "Times New Roman", serif\'>Rockwell</option>' +
+        '<option value=\' "Rockwell Extra Bold", "Rockwell Bold", monospace\'>Rockwell Extra Bold</option>' +
+        '<option value=\' TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif\'>TimesNewRoman</option>' +
+        '<option value=\' "Andale Mono", AndaleMono, monospace\'>Andale Mono</option>' +
+        '<option value=\' Consolas, monaco, monospace\'>Consolas</option>' +
+        '<option value=\' "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace\'>Courier New</option>' +
+        '<option value=\' "Lucida Console", "Lucida Sans Typewriter", Monaco, "Bitstream Vera Sans Mono", monospace\'>Lucida Console</option>' +
+        '<option value=\' "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace\'>Lucida Sans Typewriter</option>' +
+        '<option value=\' Monaco, Consolas, "Lucida Console", monospace\'>Monaco</option>' +
+        '<option value=\' Copperplate, "Copperplate Gothic Light", fantasy\'>Copperplate</option>' +
+        '<option value=\' Papyrus, fantasy\'>Papyrus</option>' +
+        '<option value=\' "Brush Script MT", cursive\'>Brush Script MT</option>  ' +
+        '</select></label>' +
+        '<label class="custom-select fontSi">' +
+        '<select class="selectThis" data-chg="fontsize">' +
+        '<option class="heading" selected>:: Size</option>' +
+        '<option value="1">Very small</option>' +
+        '<option value="2">A bit small</option>' +
+        '<option value="3">Normal</option>' +
+        '<option value="4">Medium-large</option>' +
+        '<option value="5">Big</option>' +
+        '<option value="6">Very big</option>' +
+        '<option value="7">Maximum</option>' +
+        '</select>' +
+        '</label>' +
+        '<label class="custom-select fontCol">' +
+        '<select class="selectThis" data-chg="forecolor">' +
+        '<option class="heading" selected>:: Color</option>' +
+        '<option value="#1abc9c" style="background:#1abc9c;"> turquoise</option>' +
+        '<option value="#16a085" style="background:#16a085;"> greensea</option>' +
+        '<option value="#2ecc71" style="background:#2ecc71;"> emerald</option>' +
+        '<option value="#27ae60" style="background:#27ae60;"> nephritis</option>' +
+        '<option value="#3498db" style="background:#3498db;"> peterriver</option>' +
+        '<option value="#2980b9" style="background:#2980b9;"> belizehole</option>' +
+        '<option value="#9b59b6" style="background:#9b59b6;"> amethyst</option>' +
+        '<option value="#8e44ad" style="background:#8e44ad;"> westeria</option>' +
+        '<option value="#34495e" style="background:#34495e;"> wetasphalt</option>' +
+        '<option value="#2c3e50" style="background:#2c3e50;"> midnightblue</option>' +
+        '<option value="#f1c40f" style="background:#f1c40f;"> sunflower</option>' +
+        '<option value="#f39c12" style="background:#f39c12;"> orange</option>' +
+        '<option value="#e67e22" style="background:#e67e22;"> carrot</option>' +
+        '<option value="#d35400" style="background:#d35400;"> pumpkin</option>' +
+        '<option value="#e74c3c" style="background:#e74c3c;"> alizarin</option>' +
+        '<option value="#c0392b" style="background:#c0392b;"> pomegranate</option>' +
+        '<option value="#ecf0f1" style="background:#ecf0f1;"> clouds</option>' +
+        '<option value="#bdc3c7" style="background:#bdc3c7;"> silver</option>' +
+        '<option value="#95a5a6" style="background:#95a5a6;"> concrete</option>' +
+        '<option value="#7f8c8d" style="background:#7f8c8d;"> abestos</option>' +
+        '</select>' +
+        '</label>' +
+        '<label class="custom-select fontBck">' +
+        '<select class="selectThis" data-chg="backcolor">' +
+        '<option class="heading" selected>:: Background </option>' +
+        '<option value="#1abc9c" style="background:#1abc9c;"> turquoise</option>' +
+        '<option value="#16a085" style="background:#16a085;"> greensea</option>' +
+        '<option value="#2ecc71" style="background:#2ecc71;"> emerald</option>' +
+        '<option value="#27ae60" style="background:#27ae60;"> nephritis</option>' +
+        '<option value="#3498db" style="background:#3498db;"> peterriver</option>' +
+        '<option value="#2980b9" style="background:#2980b9;"> belizehole</option>' +
+        '<option value="#9b59b6" style="background:#9b59b6;"> amethyst</option>' +
+        '<option value="#8e44ad" style="background:#8e44ad;"> westeria</option>' +
+        '<option value="#34495e" style="background:#34495e;"> wetasphalt</option>' +
+        '<option value="#2c3e50" style="background:#2c3e50;"> midnightblue</option>' +
+        '<option value="#f1c40f" style="background:#f1c40f;"> sunflower</option>' +
+        '<option value="#f39c12" style="background:#f39c12;"> orange</option>' +
+        '<option value="#e67e22" style="background:#e67e22;"> carrot</option>' +
+        '<option value="#d35400" style="background:#d35400;"> pumpkin</option>' +
+        '<option value="#e74c3c" style="background:#e74c3c;"> alizarin</option>' +
+        '<option value="#c0392b" style="background:#c0392b;"> pomegranate</option>' +
+        '<option value="#ecf0f1" style="background:#ecf0f1;"> clouds</option>' +
+        '<option value="#bdc3c7" style="background:#bdc3c7;"> silver</option>' +
+        '<option value="#95a5a6" style="background:#95a5a6;"> concrete</option>' +
+        '<option value="#7f8c8d" style="background:#7f8c8d;"> abestos</option>' +
+        '</select>' +
+        '</label>' +
+        '<input type="checkbox" name="switchMode" id="switchBox"/>' +
+        '<label for="switchBox" class="intLink"><i class="icon-code"></i></label>' +
+        '<a href="javascript:void(0);" class="intLink" title="Clean" id="getClean">' +
+        '<i class="icon-eraser"></i></a>' +
+        '<a href="javascript:void(0);" class="intLink" title="Print" id="getPrint">' +
+        '<i class="icon-print"></i></a>' +
+        '<a href="javascript:void(0);" class="intLink formatBlock" title="Undo"  data-fn="undo">' +
+        '<i class="icon-undo"></i></a>' +
+        '<a href="javascript:void(0);" class="intLink formatBlock" title="Redo"  data-fn="redo">' +
+        '<i class="icon-repeat"></i></a>' +
+        '<a href="javascript:void(0);" class="intLink formatBlock" title="Remove formatting"  data-fn="removeFormat">' +
+        '<i class="icon-remove"></i></a>' +
+        '<a href="javascript:void(0);" class="intLink formatBlock" title="Bold"  data-fn="bold">' +
+        '<i class="icon-bold"></i></a>' +
+        '<a href="javascript:void(0);" class="intLink formatBlock" title="Italic"  data-fn="italic">' +
+        '<i class="icon-italic"></i></a>' +
+        '<a href="javascript:void(0);" class="intLink formatBlock" title="Underline"  data-fn="underline">' +
+        '<i class="icon-underline"></i></a>' +
+        '<a href="javascript:void(0);" class="intLink formatBlock" title="Left align"  data-fn="justifyleft">' +
+        '<i class="icon-align-left"></i></a>' +
+        '<a href="javascript:void(0);" class="intLink formatBlock" title="Center align"  data-fn="justifycenter">' +
+        '<i class="icon-align-center"></i>' + '</a>' +
+        '<a href="javascript:void(0);" class="intLink formatBlock" title="Right align"  data-fn="justifyright">' +
+        '<i class="icon-align-right">' + '</i></a>' +
+        '<a href="javascript:void(0);" class="intLink formatBlock" title="Numbered list"  data-fn="insertorderedList">' +
+        '<i class="icon-list-ol"></i></a>' +
+        '<a href="javascript:void(0);" class="intLink formatBlock" title="Dotted list"  data-fn="insertunorderedList">' +
+        '<i class="icon-list-ul"></i></a>' +
+        '<a href="javascript:void(0);" class="intLink" title="Quote"  id="quote" data-fn="blockquote">' +
+        '<i class="icon-quote-left"></i></a>' +
+        '<a href="javascript:void(0);" class="intLink formatBlock" title="Add indentation"  data-fn="indent">' +
+        '<i class="icon-indent-right"></i></a>' +
+        '<a href="javascript:void(0);" class="intLink formatBlock" title="Delete indentation"  data-fn="outdent">' +
+        '<i class="icon-indent-left"></i></a>' +
+        '<a href="javascript:void(0);" class="intLink" title="Hyperlink" id="getLink" data-fn="createlink">' +
+        '<i class="icon-link"></i></a>' +
+        '<a href="javascript:void(0);" class="intLink formatBlock" title="Unlink"  data-fn="unlink">' +
+        '<i class="icon-unlink"></i></a>' +
+        '<a href="javascript:void(0);" class="intLink formatBlock" title="Select all"  data-fn="selectall">' +
+        '<i class="icon-copy"></i></a>' +
+        '<a href="javascript:void(0);" class="intLink formatBlock" title="Get hr"  data-fn="inserthorizontalrule">' +
+        'HR </a>' +
+        ' <a href="javascript:void(0);" class="intLink" title="Get img" id="getImg" data-fn="insertImage">' +
+        '<i class="icon-picture">' + '</i></a>' +
+        ' </div>' +
+        '<div id="textBox" contenteditable="true">' +
+        '</div></div></div>';
+    // render html
+    el.innerHTML = html;
+  }
+  
+  function initDoc(fm, bx) {
+    var elem = bx,
+        sDefTxt;
+    sDefTxt = bx.innerHTML;
+    if (fm.checked) {
+      setDocMode(true);
+    }
+  }
+  
+  function formatDoc(obj, val) {
+    if (validateMode()) {
+      document.execCommand(obj, false, val);
+    }
+  }
+  
+  
+  function validateMode() {
+    var thisForm = document.querySelector('#thisForm');
+    if (!thisForm.checked) {
+      return true;
+    }
+    alert("Uncheck \"Show HTML\".");
+    return false;
+  }
+  
+  function setDocMode(source, oDoc) {
+    var sDefTxt = oDoc.innerHTML;
+    var oContent;
+    if (source) {
+      oContent = document.createTextNode(sDefTxt);
+      oDoc.innerHTML = "";
+      var oPre = document.createElement("pre");
+      oDoc.contentEditable = false;
+      oPre.id = "sourceText";
+      oPre.contentEditable = true;
+      oPre.appendChild(oContent);
+      oDoc.appendChild(oPre);
+    } else {
+      if (document.all) {
+        sDefTxt = oDoc.innerText;
+      } else {
+        oContent = document.createRange();
+        oContent.selectNodeContents(oDoc.firstChild);
+        oDoc.innerHTML = oContent.toString();
+      }
+      oDoc.contentEditable = true;
+    }
+  }
+  
+  
+  // print function 
+  
+  function printDoc(el) {
+    if (!validateMode()) {
+      return;
+    }
+    var oPrntWin = window.open("", "_blank", "width=450,height=470,left=400,top=100,menubar=yes,toolbar=no,location=no,scrollbars=yes");
+    oPrntWin.document.open();
+    oPrntWin.document.write('<!doctype html><html><head><title>Print<\/title><\/head><body onload=\"print();\">' + el + '<\/body><\/html>');
+    oPrntWin.document.close();
+  }
+  
+  
+  // extend options
+  
+  function extend(a, b) {
+    for (var key in b) {
+      if (b.hasOwnProperty(key)) {
+        a[key] = b[key];
+      }
+    }
+    return a;
+  }
+  
+  function sweDitor(elem, options) {
+    // The div of editor
+    this.elem = elem;
+    // The options  ex. this.options.type = hello
+    this.options = extend(this.defaults, options);
+    // Get Template
+    getTemplate(elem);
+    // Start init
+    this._init();
+  }
+  
+  sweDitor.prototype = {
+    // this.options.type
+    defaults: {
+      textArea: 'editor_area',
+      showTextarea: true
+    },
+    
+    // this._init();
+    _init: function() {
+      var self = this;
+      // Div of content
+      this.box = document.querySelector('#textBox');
+      // array for change event
+      this.selects = Array.prototype.slice.call(this.elem.querySelectorAll('.selectThis'));
+      // array for click event
+      this.formats = Array.prototype.slice.call(this.elem.querySelectorAll('.formatBlock'));
+      // get print id
+      this.getPrint = document.getElementById('getPrint');
+      // The textarea
+      this.textArea = document.getElementById(this.options.textArea);
+      // get clean id
+      this.getClean = document.getElementById('getClean');
+      // get link id
+      this.getLink = document.getElementById('getLink');
+      // get img id 
+      this.getImg = document.getElementById('getImg');
+      // get switchbox
+      this.quote = document.getElementById('quote');
+      // get switchbox
+      this.switchBox = document.getElementById('switchBox');
+      // Init Doc function
+      initDoc(this, this.textArea);
+      this._initEvents();
+    },
+    
+    // this._initEvents();
+    _initEvents: function() {
+      
+      var self = this;
+      
+      //Show or hide textarea
+      if (this.options.showTextarea === true) {
+        self.textArea.style.display = 'block';
+      } else {
+        self.textArea.style.display = 'none';
+      }
+      
+      // On ready copy text of text area
+      this.box.innerHTML = this.textArea.textContent;
+      // On keyup copy text on textarea
+      this.box.addEventListener('keyup', function() {
+        self.textArea.textContent = self.box.innerHTML;
+      }, false);
+      // On keydown copy text on textarea
+      this.box.addEventListener('keydown', function() {
+        self.textArea.textContent = self.box.innerHTML;
+      }, false);
+      // add event on change for  all selects 
+      this.selects.forEach(function(el, i) {
+        el.addEventListener('change', function() {
+          formatDoc(this.getAttribute('data-chg'), this.value);
+          self.textArea.textContent = self.box.innerHTML;
+        }, false);
+      });
+      // get print
+      this.getPrint.addEventListener('click', function() {
+        printDoc(self.textArea.textContent);
+        self.textArea.textContent = self.box.innerHTML;
+      }, false);
+      // get clean
+      this.getClean.addEventListener('click', function() {
+        if (validateMode() && confirm('Are you sure?')) {
+          self.box.innerHTML = '';
+        }
+        self.textArea.textContent = self.box.innerHTML;
+      }, false);
+      // link listener
+      this.getLink.addEventListener('click', function() {
+        var sLnk = prompt('Write the URL here', 'http:\/\/');
+        if (sLnk && sLnk !== '' && sLnk !== 'http://') {
+          formatDoc(this.getAttribute('data-fn'), sLnk);
+          self.textArea.textContent = self.box.innerHTML;
+        }
+      }, false);
+      // img listener
+      this.getImg.addEventListener('click', function() {
+        var simg = prompt('Write the URL of image here', 'http:\/\/');
+        if (simg && simg !== '') {
+          formatDoc(this.getAttribute('data-fn'), simg);
+          self.textArea.textContent = self.box.innerHTML;
+        }
+      }, false);
+      
+      // all other formats  
+      this.formats.forEach(function(el, i) {
+        el.addEventListener('click', function() {
+          formatDoc(this.getAttribute('data-fn'));
+          self.textArea.textContent = self.box.innerHTML;
+        }, false);
+      });
+      // blockquote
+      this.quote.addEventListener('click', function() {
+        formatDoc('formatblock', this.getAttribute('data-fn'));
+        self.textArea.textContent = self.box.innerHTML;
+      }, false);
+      // swich pre code
+      this.switchBox.addEventListener('change', function() {
+        setDocMode(this.checked, self.box);
+        self.textArea.textContent = self.box.innerHTML;
+      }, false);
+    }
+    
+  };
+  
+  // add to global namespace
+  window.sweDitor = sweDitor;
+  
+})(window);
+
+// Init editor
+new sweDitor(document.getElementById('editor_panel'),{
+  textArea: 'editor_area', //id of textarea
+  showTextarea: false // if true show hidden text area
+});
+</script>
+</body>
+</html>

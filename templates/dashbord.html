@@ -1,0 +1,407 @@
+{% include 'base.html' %}
+
+{% block content %}
+<style>
+#chartdiv {
+  width: 100%;
+  height: 500px;
+}
+</style>
+<div class="app-content">
+					<div class="side-app">
+
+						<div class="page-header">
+
+							
+						<div>
+							<h1 class="page-title">Dashboard</h1>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="#">Home</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+							</ol>
+						</div>
+
+											<div class="d-flex  ms-auto header-right-icons header-search-icon">
+								<div class="dropdown d-sm-flex">
+									<a href="#" class="nav-link icon" data-bs-toggle="dropdown">
+										<i class="fe fe-search"></i>
+									</a>
+									<div class="dropdown-menu header-search dropdown-menu-start">
+										<div class="input-group w-100 p-2">
+											<input type="text" class="form-control " placeholder="Search....">
+											<div class=" ">
+												<button type="button" class="btn btn-primary ">
+													<i class="fa fa-search" aria-hidden="true"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div><!-- SEARCH -->
+								<div class="dropdown d-md-flex">
+									<a class="nav-link icon full-screen-link nav-link-bg">
+										<i class="fe fe-maximize fullscreen-button"></i>
+									</a>
+								</div><!-- FULL-SCREEN -->
+								
+								<div class="dropdown profile-1">
+									<a href="#" data-bs-toggle="dropdown" class="nav-link pe-2 leading-none d-flex">
+										<span>
+											<img src="{{user.profile.image.url}}" alt="profile-user" class="avatar  profile-user brround cover-image">
+										</span>
+									</a>
+									<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+										<div class="drop-heading">
+											<div class="text-center">
+												<h5 class="text-dark mb-0"> {{user.first_name}}{{user.last_name}}</h5>
+												<small class="text-muted">{{user.username}}</small>
+											</div>
+										</div>
+										<div class="dropdown-divider m-0"></div>
+										
+										<div class="dropdown-divider"></div>
+									<!-- 	<a class="dropdown-item" href="#">
+											<i class="dropdown-icon mdi mdi-compass-outline"></i> Need help?
+										</a> -->
+										<a class="dropdown-item" href="/logout">
+											<i class="dropdown-icon mdi  mdi-logout-variant"></i> Sign out
+										</a>
+									</div>
+								</div>
+								<div class="dropdown d-md-flex header-settings">
+									<a href="#" class="nav-link icon " data-bs-toggle="sidebar-right" data-bs-target=".sidebar-right">
+										<i class="fe fe-align-right"></i>
+									</a>
+								</div><!-- SIDE-MENU -->
+							</div>
+						</div>
+
+						
+				
+						<!-- ROW-2 OPEN -->
+						<div class="row">
+							<div class="col-md-12 col-lg-12 col-xl-6">
+								<div class="row">
+									<div class="col-sm-12 col-md-6 col-lg-6 ">
+										<div class="card overflow-hidden">
+											<div class="card-header">
+												<h3 class="card-title">Total Serial</h3>
+												<div class="card-options">
+													<a class="btn btn-sm btn-primary" href="/genarator">View</a>
+												</div>
+											</div>
+											<div class="card-body ">
+												<h5 class="mb-1">Total Serial</h5>
+												<h3 class="text-dark count mt-0 number-font">{{all_count}}</h3>
+												<div class="progress progress-sm mt-0 mb-2">
+													<div class="progress-bar bg-primary w-75" role="progressbar"></div>
+												</div>
+												<div class=""><i class="fa fa-caret-up ptext-primary"></i>Serial</div>
+											</div>
+										</div>
+									</div>
+									<div class=" col-sm-12 col-md-6 col-lg-6">
+										<div class="card overflow-hidden">
+											<div class="card-header">
+												<h3 class="card-title">Total Sold Serial</h3>
+												<div class="card-options">
+													<a class="btn btn-sm btn-secondary" href="/Soled_Serial">View</a>
+												</div>
+											</div>
+											<div class="card-body ">
+												<h5 class="mb-1">Total Sold Serial</h5>
+												<h3 class="text-dark count mt-0 number-font">{{soled_count}}</h3>
+												<div class="progress progress-sm mt-0 mb-2">
+													<div class="progress-bar bg-secondary w-45" role="progressbar"></div>
+												</div>
+												<div class=""><i class="fa fa-caret-down text-secondary"></i>Sold</div>
+											</div>
+										</div>
+									</div>
+									<div class=" col-sm-12 col-md-6 col-lg-6">
+										<div class="card overflow-hidden">
+											<div class="card-header">
+												<h3 class="card-title">Total Active Serial</h3>
+												<div class="card-options">
+													<a class="btn btn-sm btn-success" href="/addnew">View</a>
+												</div>
+											</div>
+											<div class="card-body ">
+												<h5 class="mb-1">Total Active Serial</h5>
+												<h3 class="text-dark count mt-0 number-font">{{active_count}}</h3>
+												<div class="progress progress-sm mt-0 mb-2">
+													<div class="progress-bar bg-success w-50" role="progressbar"></div>
+												</div>
+												<div class=""><i class="fa fa-caret-down text-success"></i>Active</div>
+											</div>
+										</div>
+									</div>
+									<div class=" col-sm-12 col-md-6  col-lg-6 ">
+										<div class="card overflow-hidden">
+											<div class="card-header">
+												<h3 class="card-title">Total Inactive Serial</h3>
+												<div class="card-options">
+													<a class="btn btn-sm btn-info" href="/serial">View</a>
+												</div>
+											</div>
+											<div class="card-body ">
+												<h5 class="mb-1">Total Inactive Serial</h5>
+												<h3 class="text-dark count mt-0 font-30 number-font">{{inactive_count}}</h3>
+												<div class="progress progress-sm mt-0 mb-2">
+													<div class="progress-bar bg-info w-25" role="progressbar"></div>
+												</div>
+												<div class=""><i class="fa fa-caret-up text-info"></i>Inactive</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+					<!-- 		<div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
+								<div class="card">
+									<div class="card-header">
+										<h3 class="card-title">Total Sold / Total Active</h3>
+									</div>
+									<div class="card-body" style="margin-bottom: -70px;margin-top: -95px;">
+										<div class="chart-wrapper ">
+											<div id="chartdiv" class="areaChart chart-dropshadow"></div>
+										</div>
+									</div>
+								</div>
+							</div> --><!-- COL END -->
+						</div>
+						<!-- ROW-2 CLOSED -->
+
+						<!-- ROW-3 OPEN -->
+						<div class="row row-cards">
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xl-5">
+								<div class="card">
+									<div class="card-header ">
+										<h3 class="card-title">Latest Sold Serial</h3>
+								
+									</div>
+									<div class="card-body">
+										<div class="table-responsive service">
+											<table class="table table-bordered table-hover  mb-0 text-nowrap ">
+												<thead>
+													<tr><th>Contact</th>
+														<th>Serial Number</th>
+														
+														<th>Date Created</th>
+														<th>Time Created</th>
+														<th>Status</th>
+														<!-- <th>Delete</th> -->
+													</tr>
+												</thead>
+												<tbody>
+													{% for i in soled_table %}
+													<tr>
+													
+														<td>{{i.contact}}</td>
+														<td>{{i.serial_number}}</td>
+														{% comment %} <td><select size="1" id="row-1-office" name="row-1-office" class="form-control ">
+															<option value="Edinburgh" selected="selected">
+																Inactive
+															</option>
+															<option value="London">
+																Active
+															</option>
+															<option value="New York">
+																Soled
+															</option>
+														
+														</select></td>  {% endcomment %}
+														<td>{{i.date_created}}</td>
+														<td>{{i.time_created}}</td>
+														{% comment %} <td><a href="#" class="btn btn-sm btn-danger">{{i.winner}}</a></td> {% endcomment %}
+													{% if i.status == 'Active' %}
+													<td><i class="fa fa-check me-1 text-success"></i> {{i.status}}</td>
+													{% elif i.status ==  'Inactive' %}
+													<td><i class="fa fa-exclamation-triangle text-warning"></i> {{i.status}}</td>
+													{% else %}
+													<td><i class="fa fa-exclamation-triangle text-danger"></i> {{i.status}}</td>
+													{% endif %}
+											<!-- 		<td class="w-1"><a href="/delete/{{ i.id }}"><button type="button" onClick='return confirm("Once deleted, you will not be able to recover this Serial number!"+"{{i.serial_number}}",);' class="btn btn-icon  btn-danger"><i class="fa fa-trash-o"></i></button></a></td> -->
+
+													</tr>
+													{% endfor %}
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div><!-- COL END -->
+							<div class="col-sm-12 col-md-12 col-lg-12 col-xl-7">
+								<div class="card">
+									<div class="card-header ">
+										<h3 class="card-title">Latest Active Serial</h3>
+								
+									</div>
+									<div class="card-body">
+										<div class="table-responsive service">
+											<table class="table table-bordered table-hover  mb-0 text-nowrap ">
+												<thead>
+													<tr><th>Creator</th>
+														<th>Serial Number</th>
+														
+														<th>Date Created</th>
+														<th>Time Created</th>
+														<th>Status</th>
+														<!-- <th>Delete</th> -->
+													</tr>
+												</thead>
+												<tbody>
+													{% for i in active_table %}
+													<tr>
+													
+														<td>{{i.user}}</td>
+														<td>{{i.genarator}}</td>
+														{% comment %} <td><select size="1" id="row-1-office" name="row-1-office" class="form-control ">
+															<option value="Edinburgh" selected="selected">
+																Inactive
+															</option>
+															<option value="London">
+																Active
+															</option>
+															<option value="New York">
+																Soled
+															</option>
+														
+														</select></td>  {% endcomment %}
+														<td>{{i.date_created}}</td>
+														<td>{{i.time_created}}</td>
+														{% comment %} <td><a href="#" class="btn btn-sm btn-danger">{{i.winner}}</a></td> {% endcomment %}
+													{% if i.stock == 'Active' %}
+													<td><i class="fa fa-check me-1 text-success"></i> {{i.stock}}</td>
+													{% elif i.stock ==  'Inactive' %}
+													<td><i class="fa fa-exclamation-triangle text-warning"></i> {{i.stock}}</td>
+													{% else %}
+													<td><i class="fa fa-exclamation-triangle text-danger"></i> {{i.stock}}</td>
+													{% endif %}
+											<!-- 		<td class="w-1"><a href="/delete/{{ i.id }}"><button type="button" onClick='return confirm("Once deleted, you will not be able to recover this Serial number!"+"{{i.serial_number}}",);' class="btn btn-icon  btn-danger"><i class="fa fa-trash-o"></i></button></a></td> -->
+
+													</tr>
+													{% endfor %}
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div><!-- COL END -->
+						</div>
+						<!-- ROW-3 CLOSED -->
+						
+				
+                    </div>
+				</div>
+
+				<!-- Resources -->
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+
+<!-- Chart code -->
+<script>
+am5.ready(function() {
+
+// Create root element
+// https://www.amcharts.com/docs/v5/getting-started/#Root_element
+var root = am5.Root.new("chartdiv");
+
+// Set themes
+// https://www.amcharts.com/docs/v5/concepts/themes/
+root.setThemes([
+  am5themes_Animated.new(root)
+]);
+
+// Create chart
+// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/
+var chart = root.container.children.push(am5percent.PieChart.new(root, {
+  radius: am5.percent(),
+  innerRadius: am5.percent(50),
+  layout: root.horizontalLayout
+}));
+
+// Create series
+// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Series
+var series = chart.series.push(am5percent.PieSeries.new(root, {
+  name: "Series",
+  valueField: "sales",
+  categoryField: "country"
+}));
+
+// Set data
+// https://www.amcharts.com/docs/v5/charts/percent-charts/pie-chart/#Setting_data
+series.data.setAll([{
+  country: "Total Active Serial",
+  sales: {{active_count}}
+}, {
+  country: "Total Inactive Serial",
+  sales: {{inactive_count}}
+}, {
+  country: "Total Serial",
+  sales: {{all_count}}
+},
+//  {
+//   country: "Germany",
+//   sales: 165.8
+// }, {
+//   country: "Australia",
+//   sales: 139.9
+// }, {
+//   country: "Austria",
+//   sales: 128.3
+// }, {
+//   country: "UK",
+//   sales: 99
+// },
+ {
+  country: "Total Promo won",
+  sales: 60
+},
+ {
+  country: "Total Sold Serial",
+  sales: {{soled_count}}
+}]);
+
+// Disabling labels and ticks
+series.labels.template.set("visible", false);
+series.ticks.template.set("visible", false);
+
+// Adding gradients
+series.slices.template.set("strokeOpacity", 0);
+series.slices.template.set("fillGradient", am5.RadialGradient.new(root, {
+  stops: [{
+    brighten: -0.8
+  }, {
+    brighten: -0.8
+  }, {
+    brighten: -0.5
+  }, {
+    brighten: 0
+  }, {
+    brighten: -0.5
+  }]
+}));
+
+// Create legend
+// https://www.amcharts.com/docs/v5/charts/percent-charts/legend-percent-series/
+var legend = chart.children.push(am5.Legend.new(root, {
+  centerY: am5.percent(50),
+  y: am5.percent(50),
+  marginTop: 15,
+  marginBottom: 15,
+  layout: root.verticalLayout
+}));
+
+legend.data.setAll(series.dataItems);
+
+
+// Play initial series animation
+// https://www.amcharts.com/docs/v5/concepts/animations/#Animation_of_series
+series.appear(1000, 100);
+
+}); // end am5.ready()
+</script>
+{% endblock content %}
+                <!--app-content open-->
+				
+			

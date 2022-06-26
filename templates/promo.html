@@ -1,0 +1,429 @@
+{% include 'base.html' %}
+
+{% block content %}
+<style type="text/css">
+	section {
+  float: left;
+}
+
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.loader {
+  display: none;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.loading {
+  border: 2px solid #ccc;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border-top-color: #1ecd97;
+  border-left-color: #1ecd97;
+  animation: spin 1s infinite ease-in;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>
+                <!--app-content open-->
+				<div class="app-content">
+					<div class="side-app">
+
+
+				<!--  -->
+							
+
+							<div class="col-sm-12 col-md-12">
+								{% if messages %}
+												<div class="alert alert-success mb-4"> 
+													{% for message in messages %}
+													<button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true">×</button>
+												<!-- 	 <strong>Success Message</strong>
+													<hr class="message-inner-separator"> -->
+													<p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+													 {% endfor %}
+												</div>
+									{% endif %}
+											</div>
+
+
+						<div class="page-header">
+
+							
+						<div>
+							<h1 class="page-title"> PROMO</h1>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="#">Pages</a></li>
+								<li class="breadcrumb-item active" aria-current="page">PROMO</li>
+							</ol>
+						</div>
+
+											<div class="d-flex  ms-auto header-right-icons header-search-icon">
+								<div class="dropdown d-sm-flex">
+									<a href="#" class="nav-link icon" data-bs-toggle="dropdown">
+										<i class="fe fe-search"></i>
+									</a>
+									<div class="dropdown-menu header-search dropdown-menu-start">
+										<div class="input-group w-100 p-2">
+											<input type="text" class="form-control " placeholder="Search....">
+											<div class=" ">
+												<button type="button" class="btn btn-primary ">
+													<i class="fa fa-search" aria-hidden="true"></i>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div><!-- SEARCH -->
+								<div class="dropdown d-md-flex">
+									<a class="nav-link icon full-screen-link nav-link-bg">
+										<i class="fe fe-maximize fullscreen-button"></i>
+									</a>
+								</div><!-- FULL-SCREEN -->
+						
+								<div class="dropdown profile-1">
+									<a href="#" data-bs-toggle="dropdown" class="nav-link pe-2 leading-none d-flex">
+										<span>
+											<img src="{{user.profile.image.url}}" alt="profile-user" class="avatar  profile-user brround cover-image">
+										</span>
+									</a>
+									<div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+										<div class="drop-heading">
+											<div class="text-center">
+												<h5 class="text-dark mb-0">{{user}}</h5>
+												<small class="text-muted">Administrator</small>
+											</div>
+										</div>
+										<div class="dropdown-divider m-0"></div>
+										
+										<div class="dropdown-divider"></div>
+									<!-- 	<a class="dropdown-item" href="faq.html">
+											<i class="dropdown-icon mdi mdi-compass-outline"></i> Need help?
+										</a> -->
+										<a class="dropdown-item" href="/logout">
+											<i class="dropdown-icon mdi  mdi-logout-variant"></i> Sign out
+										</a>
+									</div>
+								</div>
+								<div class="dropdown d-md-flex header-settings">
+									<a href="#" class="nav-link icon " data-bs-toggle="sidebar-right" data-bs-target=".sidebar-right">
+										<i class="fe fe-align-right"></i>
+									</a>
+								</div><!-- SIDE-MENU -->
+							</div>
+						</div>
+
+						
+						<!-- ROW-1 OPEN -->
+				<!-- 	<form method="post"  onsubmit="return submitFormDetails(this);" > -->
+				 
+						<!-- <div class="row">
+							<div class="col-lg-4 col-xl-4 col-md-12 col-sm-12">
+								
+								<div class="card">
+									<div class="card-header">
+										<div class="card-title">GENERATOR</div>
+									</div>
+									<div class="card-body">
+								
+										<div class="mb-3">
+											<label class="form-label">Amount of Serial</label>
+											<input type="number" required placeholder="Amount you wont to Generate" class="form-control" name="amount">
+										</div>
+										<div class="mb-3">
+											<label class="form-label">Start Range</label>
+											<input type="number" required placeholder="What is your starting Range" class="form-control" name="start">
+										</div>
+										<div class="mb-0">
+											<label class="form-label">End Range</label>
+											<input type="number" required placeholder="What is your ending Range" class="form-control" name="end">
+										</div>
+									</div>
+									<div class="card-footer text-end">
+										<button type="submit" class="btn btn-primary">Generate</button>
+										<a href="#" class="btn btn-danger">Cancle</a>
+									</div>
+								</div>
+							
+							</div>
+							<div class="col-lg-8 col-xl-8 col-md-12 col-sm-12">
+								<div class="card">
+
+									<div class="card-body">
+									
+									
+										<div class="mb-4">
+											<label class="form-label">Generated Serial Numbers</label>
+											<textarea class="form-control" rows="6" disabled>
+
+												
+											</textarea>
+										</div>
+										<div class="mb-4">
+											<label class="form-label">Serial Synbol </label>
+											<input type="text" class="form-control" placeholder="SE" disabled name="serial">
+										</div>
+										<div class="mb-0">
+											<label class="form-label">Date Of Creation</label>
+											<div class="row">
+												<div class="col-md-4">
+													<input type="text" class="form-control" value="{{day}}" placeholder="{{day}}" name="day" disabled>
+													
+												</div>
+												<div class="col-md-4">
+													<input type="text" class="form-control" value="{{month}}" placeholder="{{month}}" name="mon" disabled>
+												</div>
+												<div class="col-md-4">
+													<input type="text" class="form-control" value="{{year}}" placeholder="{{year}}" name="year" disabled>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+ -->
+				<!-- 	</form> -->
+						<!-- ROW-1 CLOSED -->
+
+						<!-- ROW-2 OPEN -->
+						<div class="row">
+							<div class="col-12">
+								<div class="card">
+								<!-- 	<section>
+										  <div class="left">1</div>
+										  <div class="left">2</div>
+										  <div class="right">3</div>
+										  <p>3</p>
+										</section> -->
+											
+									<div class="card-header ">
+
+										<h3 class="card-title ">Winning Serial Numbers</h3>
+										{% if request.user.is_superuser %}
+										<div class="card-options">
+
+											<form method="post"  onsubmit="return submitFormDetails(this);">
+												{% csrf_token %}
+										
+											<div class="input-group">
+												<div class="input-group-text">
+													<div class="">
+														<i class="fa fa-calendar tx-16 lh-0 op-6"></i>
+													</div>
+												</div>
+												<input class="form-control hasDatepicker" name="ed"  required type="date">
+													&#160;&#160;
+												<div class="input-group-text">
+													<div class="">
+														<i class="fa fa-calendar tx-16 lh-0 op-6"></i>
+													</div>
+												</div>
+
+												<input class="form-control hasDatepicker" name="st"  required type="date">
+													 &#160;&#160;
+												<div class="input-group-text">
+													<div class="">
+														<i class="fa fa-percent tx-16 lh-0 op-6"></i>
+													</div>
+												</div>
+
+												<input class="form-control hasDatepicker" id="datepickerNoOfMonths" name="am"  placeholder="amount" required type="number">
+													&#160;&#160;
+												<div class="input-group-text">
+													<div class="">
+														<i class="fa fa-user tx-16 lh-0 op-6"></i>
+													</div>
+												</div>
+
+												<input class="form-control hasDatepicker" id="datepickerNoOfMonths" name="co"  placeholder="Enter Number of winner" required type="number">
+												&#160;&#160;
+											<button type="submit" id="add__new__list" class="btn btn-md btn-primary"><i class="fa fa-plus"></i> Run Promo</button>
+											</div>
+										
+								
+											
+											</form>
+										</div>
+										{% else %}
+
+										{% endif %}
+									</div>
+
+									<div class="table-responsive">
+										<table class="table table-hover card-table table-striped table-vcenter table-outline text-nowrap">
+											<thead>
+												<tr>
+													<th scope="col">ID</th>
+													<!-- <th scope="col">Creator Name</th> -->
+													<th scope="col">Serial Info</th>
+													<th scope="col">Win Date</th>
+													<th scope="col">Date Sold</th>
+													<!-- th scope="col">Action Button </th> -->
+													<th scope="col">Contact</th>
+													<th scope="col">Won</th>
+													<th scope="col">Send SMS</th>
+												</tr>
+											</thead>
+											<tbody>
+												{% for i in serial %}
+												<tr>
+													<td>{{i.id}}</td>
+													<!-- <td>{{i.user.username}}</td> -->
+													<td>{{i.serial_number}}</td>
+													<td>{{i.date_created}}</td>
+													<td>{{i.date_sold}}</td>
+													<td>{{i.contact}}</td>
+													<td>{{i.winner}}</td>
+
+													<td>
+														<a class="btn btn-sm" onClick='return confirm("You are about to send sms to this number!"+"{{i.contact}}",);' href="/send-sms/{{ i.id }}" id="load2" data-loading-text="<i class='fa fa-spinner fa-spin'></i> Processing Order" onclick="spinner()" style="background-color:green; color: #fff;" href="#"><i class="fa fa-envelope"></i> Send Sms</a>
+														<div class="loader">
+													  <div class="loading">
+													  </div>
+													</td>
+													<!-- <td>
+														<a class="btn btn-sm btn-primary" href="#"><i class="fa fa-edit"></i> Edit</a>
+														<a class="btn btn-sm btn-danger" onClick='return confirm("Once deleted, you will not be able to recover this Serial number!"+"{{i.genarator}}",);' href="/deletes/{{ i.id }}"><i class="fa fa-trash"></i> Delete</a>
+													</td> -->
+												<!-- 	<td><a class="btn btn-sm btn-secondary" style="cursor:not-allowed;color:#fff;"><i class="fa fa-info-circle"></i> {{i.contact}}</a> </td> -->
+												</tr>
+												{% endfor %}
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ROW-2 CLOSED -->
+
+                
+                    </div>
+				</div>
+
+
+
+
+				
+<!-- MESSAGE MODAL -->
+<!-- <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog"  aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="example-Modal3">GENERATOR</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+			
+				<form method="post"  onsubmit="return submitFormDetails(this);" >
+					{% csrf_token %} 
+					<div class="row">
+							
+								<div class="card-body">
+							
+									<div class="mb-3">
+										<label class="form-label">Amount of Serial</label>
+										<input type="number" required placeholder="Amount you wont to Generate" class="form-control" name="amount">
+									</div>
+									<div class="mb-3">
+										<label class="form-label">Start Range</label>
+										<input type="number" required placeholder="What is your starting Range" class="form-control" name="start">
+									</div>
+									<div class="mb-0">
+										<label class="form-label">End Range</label>
+										<input type="number" required placeholder="What is your ending Range" class="form-control" name="end">
+									</div>
+								</div>
+						
+					
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Generate</button>
+					</div>
+				</form>
+
+
+			</div>
+		
+		</div>
+	</div>
+</div> -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+ 
+	
+<script>
+	$(document).ready(function () {
+		$('.confirm_del').click(function (e) {
+			e.preventDefault();
+			var id = $(this).val();
+
+			swal({
+				title: "Are you sure?",
+				text: "Once deleted, you will not be able to recover this imaginary file!",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+			  })
+			  .then((willDelete) => {
+				if (willDelete) 
+				{
+				  $.ajax({
+					  url:"/deletes/"+ id,
+					  success: function (response){
+						swal({
+							title: 'deleted successfully',
+							text: "your serial data has been deleted successfully",
+							icon: "success",
+							button: "ok",
+						}).then((confirm) => {
+							window.location.reload();
+						});
+				  });
+				} 
+				else 
+				{
+				  swal("Your imaginary file is safe!");
+				}
+			});
+		});
+	});
+</script>
+<script type="text/javascript">
+    function spinner() {
+        document.getElementsByClassName("loader")[0].style.display = "block";
+        setTimeout(function() {
+		       $this.a('reset');
+		   }, 8000);
+    }
+
+
+		$('.btn').on('click', function() {
+		    var $this = $(this);
+		  $this.a('loading');
+		    setTimeout(function() {
+		       $this.a('reset');
+		   }, 8000);
+		});
+</script>    
+				{% endblock content %}

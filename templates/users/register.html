@@ -1,0 +1,140 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!doctype html>
+<html lang="en" dir="ltr">
+	
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+
+		<!-- META DATA -->
+		<meta charset="UTF-8">
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="Volgh - Codeigniter Bootstrap 5 Admin Template">
+		<meta name="author" content="SPRUKO™">
+		<meta name="keywords" content="codeigniter dashboard template, codeigniter dashboard, codeigniter bootstrap, codeigniter admin panel, codeigniter admin dashboard, codeigniter php template, codeigniter admin template Bootstrap 5, codeigniter bootstrap template, codeigniter admin dashboard template, mvc admin template, codeigniter mvc, codeigniter template bootstrap, php codeigniter template, codeigniter mvc template, codeigniter bootstrap 5 admin template">
+
+                <!-- FAVICON -->
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/brand/favicon.ico" />
+
+        <!-- TITLE -->
+        <title>Bueno - Signup</title>
+
+        <!-- BOOTSTRAP CSS -->
+        <link href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
+
+        <!-- STYLE CSS -->
+        <link href="{% static 'assets/css/style.css' %}" rel="stylesheet"/>
+        <link href="{% static 'assets/css/skin-modes.css' %}" rel="stylesheet"/>
+        <link href="{% static 'assets/css/dark-style.css' %}" rel="stylesheet"/>
+
+        <!-- SINGLE-PAGE CSS -->
+	<link href="{% static 'assets/plugins/single-page/css/main.css' %}" rel="stylesheet" type="text/css">
+
+        <!-- P-scroll bar css-->
+        <link href="{% static 'assets/plugins/p-scroll/perfect-scrollbar.css' %}" rel="stylesheet" />
+
+        <!--- FONT-ICONS CSS -->
+        <link href="{% static 'assets/css/icons.css' %}" rel="stylesheet"/>
+
+        
+		
+        <!-- COLOR SKIN CSS -->
+        <link id="theme" rel="stylesheet" type="text/css" media="all" href="{% static 'assets/colors/color1.css' %}" />
+
+        <!-- SWITCHER SKIN CSS -->
+        <link href="{% static 'assets/switcher/css/switcher.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/switcher/demo.css' %}" rel="stylesheet">
+
+    </head>
+
+	<body class="login-img">
+
+		        <!-- Start Switcher -->
+		
+		<!-- End Switcher -->
+		<!-- GLOABAL LOADER -->
+		<div id="global-loader">
+			<img src="{% static 'assets/images/loader.svg' %}" class="loader-img" alt="Loader">
+		</div>
+		<!-- /GLOABAL LOADER -->
+
+			
+				<!-- PAGE -->
+				<div class="page">
+					<div class="">
+						<!-- CONTAINER OPEN -->
+						<div class="col col-login mx-auto">
+							<div class="text-center">
+								<img src="{% static 'assets/images/brand/logo.png' %}" class="header-brand-img" alt="">
+							</div>
+						</div>
+						<div class="container-login100">
+							<div class="wrap-login100 p-6">
+								<form method="post" class="login100-form validate-form">
+									{% csrf_token %}
+								<!-- 	<span class="login100-form-title">
+										Login
+									</span> -->
+									<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+										<!-- <input class="input100" type="text" name="email" placeholder="Email"> -->
+										{{form|crispy}}
+									<!-- 	<span class="focus-input100"></span>
+										<span class="symbol-input100">
+											<i class="zmdi zmdi-email" aria-hidden="true"></i>
+										</span> -->
+									</div>
+								<!-- 	<div class="wrap-input100 validate-input" data-validate = "Password is required">
+										<input class="input100" type="password" name="pass" placeholder="Password">
+										<span class="focus-input100"></span>
+										<span class="symbol-input100">
+											<i class="zmdi zmdi-lock" aria-hidden="true"></i>
+										</span>
+									</div> -->
+									<!-- <div class="text-end pt-1">
+										<p class="mb-0"><a href="#" class="text-primary ms-1">Forgot Password?</a></p>
+									</div> -->
+									<div class="container-login100-form-btn">
+										<button type="submit" class="login100-form-btn btn-primary">
+											Sign up
+										</button>
+									</div>
+									<div class="text-center pt-3">
+										<p class="text-dark mb-0">Already a member?<a href="/login" class="text-primary ms-1">Sign In now</a></p>
+									</div>
+								</form>
+							</div>
+						</div>
+						<!-- CONTAINER CLOSED -->
+					</div>
+				</div>
+				<!-- End PAGE -->
+
+			
+		        <!-- JQUERY JS -->
+        <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+
+        <!-- BOOTSTRAP JS -->
+        <script src="{% static 'assets/plugins/bootstrap/js/popper.min.js' %}"></script>
+        <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+
+        <!-- RATING STAR -->
+        <script src="{% static 'assets/plugins/rating/jquery.rating-stars.js' %}"></script>
+
+        <!-- INPUT MASK PLUGIN-->
+        <script src="{% static 'assets/plugins/input-mask/jquery.mask.min.js' %}"></script>
+
+        <!-- Perfect SCROLLBAR JS-->
+        <script src="{% static 'assets/plugins/p-scroll/perfect-scrollbar.js' %}"></script>
+
+        
+		
+        <!-- SWITCHER JS -->
+        <script src="{% static 'assets/switcher/js/switcher.js' %}"></script>
+
+        <!-- CUSTOM JS-->
+        <script src="{% static 'assets/js/custom.js' %}"></script>
+    </body>
+
+
+</html>
